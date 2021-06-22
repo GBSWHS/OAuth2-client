@@ -10,3 +10,14 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+.show-loading {
+  animation: show-loading .5s ease-in-out;
+  opacity: 0;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes show-loading {
+  0% { opacity: 0; }
+  100% { opacity: 0.2; }
+}

@@ -15,7 +15,7 @@ export default function Home() {
     }}).then(res => res.json())
   
   const url = new URL(router.asPath, 'http://example.com')
-  const { data, error } = useSWR('/api/checkClient?' + url.searchParams.toString(), fetcher())
+  const { data, error } = useSWR('/internal/checkClient?' + url.searchParams.toString(), fetcher())
 
   if (data && data?.success && !data?.needLogin)
     window.location.replace(data?.redirect)

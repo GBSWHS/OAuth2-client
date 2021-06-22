@@ -10,5 +10,11 @@ module.exports = {
         permanent: true,
       }
     ]
+  },
+  async rewrites() {
+    return [
+      { source: "/external/:path*", destination: "/api/external/:path*" },
+      { source: "/internal/:path*", destination: "/api/internal/:path*" },
+    ]
   }
 }

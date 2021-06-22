@@ -17,23 +17,24 @@ export default function LoginForm () {
   async function onSubmit (ev: FormEvent) {
     ev.preventDefault()
     recaptchaRef.current.execute()
+    if (process.env.NEXT_PUBLIC_SKIP_CAPTCHA) onReCAPTCHAChange('')
   }
 
   async function onReCAPTCHAChange (captcha: string) {
-    const res = await fetch('/api/login', {
+    const res = await fetch('/internal/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id, password, captcha
       })}).then((res) => res.json())
-
+  
     recaptchaRef.current.reset()
     
     if (!res.success) {
       setError(res.message)
       return
     }
-
+  
     window.localStorage.setItem('token', res.token)
     router.reload()
   }
