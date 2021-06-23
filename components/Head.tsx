@@ -1,10 +1,10 @@
 import NextHead from 'next/head'
 
-export default function Head () {
+export default function Head ({ description = '' }) {
   return (
     <NextHead>
       <link rel="shortcut icon" href="favicon.png" type="image/png"/>
-      <title>경북소프트웨어고 통합 로그인 시스템</title>
+      <title>경북소프트웨어고 통합 로그인 시스템{description?` - ${description}`:''}</title>
       <meta name="theme-color" content="#65C2E4"/>
       <meta name="twitter:card" content="summary"/>
       <meta name="og:site_name" content="경북소프트웨어고등학교"/>

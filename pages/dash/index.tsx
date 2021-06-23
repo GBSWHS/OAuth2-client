@@ -1,8 +1,9 @@
+import Head from '../../components/Head'
 import ClientList from '../../components/ClientList'
 
 import useSWR from 'swr'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
@@ -31,6 +32,7 @@ export default function Dashboard () {
 
   return (
     <div className="w-screen h-screen">
+      <Head description="개발자용 대시보드"/>
       {!data ? (
         <div className="absolute z-20 top-0 left-0 w-full h-full bg-black show-loading text-center text-blue-400">
           <h3>Loading...</h3>
@@ -44,6 +46,7 @@ export default function Dashboard () {
       ): <></>}
 
       <Link href="/dash/create"><button className="mt-3 border-0 font-bold bg-gbswhs6 text-white rounded px-3 py-2" type="submit">생성</button></Link>
+      <Link href="/docs"><button className="mt-3 border-0 font-bold bg-gbswhs2 text-white rounded px-3 py-2" type="submit">문서</button></Link>
       <ClientList token={token}/>
     </div>
   )

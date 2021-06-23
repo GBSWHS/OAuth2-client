@@ -10,6 +10,7 @@ export default function Logo () {
       <Image
         width="150"
         height="150"
+        priority
         src="/img/symbol-only.png"
         alt="경북소프트웨어고등학교 로고"/>
     </a>

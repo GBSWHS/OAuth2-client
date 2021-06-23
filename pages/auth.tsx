@@ -22,7 +22,7 @@ export default function Home() {
   
   return (
     <div className="w-screen h-screen">
-      <Head />
+      <Head description="로그인"/>
       <Logo />
       <div className="flex h-full justify-center items-center">
         <div className="p-5">
