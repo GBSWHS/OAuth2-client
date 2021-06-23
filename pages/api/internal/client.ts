@@ -16,7 +16,6 @@ export default async function dashAuthApi (req: NextApiRequest, res: NextApiResp
   }
   
   const data = await fetch(process.env.BACKEND_URI + '/internal/client?id=' + req.query.id).then((res) => res.json())
-  console.log(data)
   if (data.success && data.client.owner_id !== tokenData.id) return res.send({ success: false, message: 'you don\'t have any permission to see client infomations' })
 
   return res.send(data)

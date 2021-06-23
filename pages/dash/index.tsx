@@ -3,17 +3,30 @@ import ClientList from '../../components/ClientList'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 export default function Dashboard () {
   const router = useRouter()
   const url = new URL(router.asPath, 'http://example.com')
-  const { data, error } = useSWR('/external/auth?' + url.searchParams.toString(), fetcher)
   
+  const [token, setToken] = useState('')
+  const code = url.searchParams.get('code')
+  
+  useEffect(() => {
+    if (!window.localStorage.getItem('dash_token') && !code)
+      router.push('/auth?client_id=0&redirect_uri=/dash&response_type=code')
+
+    if (!token) setToken(window.localStorage.getItem('dash_token'))
+  })
+
+  const { data, error } = useSWR('/external/auth?code=' + code, fetcher)
+
   if (data && !data.success && !window.localStorage.getItem('dash_token')) router.push('/auth?client_id=0&redirect_uri=/dash&response_type=code')
-  if (data && data.success) {
+  if (data && data.success && !token) {
     history.replaceState(null, '', window.location.pathname)
     window.localStorage.setItem('dash_token', data.token)
+    setToken(data.token)
   }
 
   return (
@@ -31,7 +44,7 @@ export default function Dashboard () {
       ): <></>}
 
       <Link href="/dash/create"><button className="mt-3 border-0 font-bold bg-gbswhs6 text-white rounded px-3 py-2" type="submit">생성</button></Link>
-      <ClientList />
+      <ClientList token={token}/>
     </div>
   )
 }

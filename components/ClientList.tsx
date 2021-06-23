@@ -1,10 +1,12 @@
 import useSWR from 'swr'
 import Link from 'next/link'
 
-export default function ClientList () {
+export default function ClientList ({ token = '' }) {
+  if (!token) return <></>
+
   const fetcher = () => (url: string) =>
     fetch(url, { headers: {
-      Authorization: 'Bearer ' + window?.localStorage?.getItem?.('dash_token') || ''
+      Authorization: 'Bearer ' + token
     }}).then(res => res.json())
 
   const { data, error } = useSWR('/internal/clients', fetcher())
