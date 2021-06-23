@@ -30,7 +30,10 @@ export default function Dashboard () {
     setToken(data.token)
   }
 
-  if (data && !data.success) router.push('/auth?client_id=0&redirect_uri=/dash&response_type=code')
+  if (data && !data.success) {
+    window.localStorage.removeItem('dash_token')
+    router.push('/auth?client_id=0&redirect_uri=/dash&response_type=code')
+  }
 
   return (
     <div className="w-screen h-screen">
