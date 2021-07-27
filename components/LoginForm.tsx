@@ -5,7 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 const setState = (fn: any) =>
   (ev: ChangeEvent<HTMLInputElement>) => fn(ev.target.value)
 
-export default function LoginForm () {
+export default function LoginForm ({ fetcher }) {
   const router = useRouter()
 
   const [id, setId] = useState('')
@@ -21,7 +21,7 @@ export default function LoginForm () {
   }
 
   async function onReCAPTCHAChange (captcha: string) {
-    const res = await fetch('/internal/login', {
+    const res = await fetcher('/internal/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -49,7 +49,7 @@ export default function LoginForm () {
       />
 
       {error ? (
-        <div className="border-t-4 border-red-500 p-3 mt-5 bg-red-100 rounded text-center">
+        <div className="border-t-4 border-red-500 p-3 bg-red-100 rounded text-center">
           {error}
         </div>
       ): <></>}      

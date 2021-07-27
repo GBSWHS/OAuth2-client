@@ -30,7 +30,7 @@ export default function Dashboard () {
     setToken(data.token)
   }
 
-  if (data && !data.success) {
+  if (data && !data.success && !token) {
     window.localStorage.removeItem('dash_token')
     router.push('/auth?client_id=0&redirect_uri=/dash&response_type=code')
   }

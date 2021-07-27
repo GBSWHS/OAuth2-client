@@ -4,11 +4,25 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #f5f6ff;
 }
 
 * {
   box-sizing: border-box;
+}
+
+#nprogress .bar {
+  height: 8px !important;
+  z-index: 100000 !important;
+  background: #ED1C24 !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #ED1C24, 0 0 5px #ED1C24;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #ED1C24;
+  border-left-color: #ED1C24;
 }
 
 .show-loading {
