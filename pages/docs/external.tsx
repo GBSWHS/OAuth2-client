@@ -48,6 +48,13 @@ const Docs = () =>
 
       <br />
 
+      <SectionTitle>예제</SectionTitle>
+      <p>본 문서를 따른 예제는 다음 주소에서 확인 하실 수 있습니다.</p>
+      <a href="https://github.com/GBSWHS/OAuth2-examples"><span className="border-b-2 text-gbswhs6 font-bold border-gbswhs4 hover:border-gbswhs3 cursor-pointer">예제 코드 (Node.js, PHP)</span></a>
+
+      <br />
+      <br />
+
       <SectionTitle>구현</SectionTitle>
       <p>클라이언트 ID & Secret 생성 및 리다이렉트 주소 설정은 <Link href="/dash"><span className="border-b-2 border-gbswhs4 hover:border-gbswhs3 cursor-pointer">대시보드</span></Link>에서 하실 수 있습니다.</p>
       <br />
