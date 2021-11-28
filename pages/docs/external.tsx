@@ -1,5 +1,4 @@
 import Head from "../../components/Head"
-import Logo from "../../components/Logo"
 import Title from "../../components/docs/Title"
 import CodeBlock from "../../components/docs/CodeBlock"
 import Container from "../../components/docs/Container"
@@ -12,7 +11,6 @@ import Image from "next/image"
 const Docs = () =>
   <div className="w-screen h-screen overflow-y-scroll">
     <Head description="개발자용 문서 (external)"/>
-    <Logo />
     <Container>
       <Title>응용 개발자용 문서</Title>
       <p>이 문서는 어플리케이션 개발자가 <b>경북소프트웨어고등학교 통합 로그인 시스템</b>을 응용하는 법을 설명합니다.</p>
@@ -22,7 +20,7 @@ const Docs = () =>
       <p>이 시스템은 경북 소프트웨어 고등학교 학생들이 제작한 웹 사이트들의 아이디, 비밀번호 통합을 위해 제작되었습니다.</p>
       <br />
       <p>이 시스템은 간략화된 OAuth2 방식을 사용합니다. 추후 업데이트를 통해 변경될 수 있습니다.</p>
-      <p>비밀번호 암호화로 SHA-256 with Salt 방식을 사용합니다. <span className="text-gbswhs6">2022년부터 SHA3으로 변경될 예정입니다.</span></p>
+      <p>비밀번호 암호화로 SHA-3 with Salt 방식을 사용합니다.</p>
 
       <br />
 

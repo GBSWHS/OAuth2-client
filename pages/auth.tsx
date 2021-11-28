@@ -75,7 +75,7 @@ export default function Home() {
                       </div>
                   }
                   <div className="flex flex-wrap gap-3">
-                    <button className="mt-3 border-0 font-bold bg-gbswhs2 hover:bg-gbswhs3 text-white rounded px-3 py-2" onClick={() => window.location.replace(data?.redirect)}>로그인</button>
+                    <button className="mt-3 border-0 font-bold bg-gbswhs2 hover:bg-gbswhs3 text-white rounded px-3 py-2" onClick={() => window.location.replace(data?.redirect)}>{data.user_nickname}님으로 계속</button>
                     <button className="mt-3 border-0 font-bold bg-gbswhs2 hover:bg-gbswhs3 text-white rounded px-3 py-2"  onClick={() => { window.localStorage.removeItem('token'); window.location.reload() }}>다른계정으로...</button>
                   </div>
                 </div>
