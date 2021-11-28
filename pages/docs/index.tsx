@@ -1,5 +1,4 @@
 import Head from "../../components/Head"
-import Logo from "../../components/Logo"
 
 import Link from "next/link"
 import Container from "../../components/docs/Container"
@@ -7,7 +6,6 @@ import Container from "../../components/docs/Container"
 const Docs = () =>
   <div className="w-screen h-screen">
     <Head description="개발자용 문서"/>
-    <Logo />
     <Container>
       <div className="text-center flex justify-center items-center h-screen">
         <div>
