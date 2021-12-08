@@ -1,37 +1,20 @@
-html, body {
-  padding: 0;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-#nprogress .bar {
-  height: 8px !important;
-  z-index: 100000 !important;
-  background: #ED1C24 !important;
-}
-
-#nprogress .peg {
-  box-shadow: 0 0 10px #ED1C24, 0 0 5px #ED1C24;
-}
-
-#nprogress .spinner-icon {
-  border-top-color: #ED1C24;
-  border-left-color: #ED1C24;
-}
-
-.show-loading {
-  animation: show-loading .5s ease-in-out;
-  opacity: 0;
-  backdrop-filter: blur(10px);
-}
-
-@keyframes show-loading {
-  0% { opacity: 0; }
-  100% { opacity: 0.2; }
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

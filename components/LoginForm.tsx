@@ -6,7 +6,7 @@ import { ChangeEvent, createRef, FormEvent, useState } from 'react'
 const setState = (fn: any) =>
   (ev: ChangeEvent<HTMLInputElement>) => fn(ev.target.value)
 
-export default function LoginForm ({ fetcher }) {
+export default function LoginForm ({ fetcher, reload }) {
   const router = useRouter()
 
   const [id, setId] = useState('')
@@ -37,7 +37,7 @@ export default function LoginForm ({ fetcher }) {
     }
   
     window.localStorage.setItem('token', res.token)
-    router.reload()
+    reload ? router.reload() : router.push('/dash')
   }
 
   return (

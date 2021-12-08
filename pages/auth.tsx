@@ -51,7 +51,7 @@ export default function Home() {
               {data && data?.needLogin ? ( // 데이터를 받았으며 성공이고 로그인이 필요한경우
                 <div>
                   <h3 className="font-bold text-3xl">Login</h3>
-                  <LoginForm fetcher={window.fetch}/>
+                  <LoginForm fetcher={window.fetch} reload={true}/>
                 </div>
               ) : <></>}
 

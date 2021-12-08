@@ -1,4 +1,4 @@
-import Head from '../../components/Head'
+import Head from '../../../components/Head'
 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
