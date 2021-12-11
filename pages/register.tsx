@@ -16,7 +16,7 @@ const Login: NextPage = () => {
           <div className="shadow-2xl rounded-lg">
             <div className="p-10 h-full">
               <h3 className="font-bold text-3xl">Register</h3>
-              <RegisterForm fetcher={fetch} reload={false} />
+              <RegisterForm fetcher={fetch} />
             </div>
           </div>
         </div>

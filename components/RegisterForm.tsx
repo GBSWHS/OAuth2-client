@@ -1,6 +1,7 @@
+import Link from 'next/link'
+import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
-import toast from 'react-hot-toast'
 import { ChangeEvent, createRef, FormEvent, useState } from 'react'
 
 const setState = (fn: any) =>
@@ -10,6 +11,7 @@ export default function LoginForm ({ fetcher }) {
   const router = useRouter()
 
   const [step, setStep] = useState(false)
+  const [left, setLeft] = useState(Date.now())
   const [user, setUser] = useState({
     grade: '', uclass: '', number: '', id: '', name: '', email: '', password: '',
     password_confirm: '', phone: 0, code: '', nickname: ''
@@ -51,6 +53,7 @@ export default function LoginForm ({ fetcher }) {
     if (!res.success) {
       toast.error(res.error_description)
       setStep(false)
+      setLeft(res.enddate)
       return
     }
     setStep(true)
@@ -66,7 +69,10 @@ export default function LoginForm ({ fetcher }) {
         </div>
         <input onChange={(e) => setUser({...user, name: e.target.value})} className="mt-3 block w-full border-b-2 border-gry-200 px-3 py-2 focus:border-gbswhs2" required type="text" placeholder="이름"/>
         <input onChange={(e) => setUser({...user, phone: Number(e.target.value)})} className="mt-3 block w-full border-b-2 border-gry-200 px-3 py-2 focus:border-gbswhs2" required type="tel" pattern="010[0-9]{4}[0-9]{4}" placeholder="전화번호"/>
-        <button className="mt-3 font-bold bg-gbswhs2 text-white rounded px-3 py-2" type="button" onClick={(e) => onCheck(e)}>인증코드 발급 </button>
+        <div className="flex gap-2">
+          <button className="mt-3 font-bold bg-gbswhs2 text-white rounded px-3 py-2" type="submit">인증코드 발급 </button>
+          <Link href="/login"><button className="mt-3 font-bold bg-gbswhs2 text-white rounded px-3 py-2" type="submit">계정이 있어요</button></Link>
+        </div>
       </form>
       <form className={!step ? 'hidden' : ''} onSubmit={onSubmit}>
         <input onChange={(e) => setUser({...user, id: e.target.value})} className="mt-3 block w-full border-b-2 border-gry-200 px-3 py-2 focus:border-gbswhs2" required type="text" placeholder="아이디"/>
@@ -77,7 +83,11 @@ export default function LoginForm ({ fetcher }) {
         <input onChange={(e) => setUser({...user, password_confirm: e.target.value})} className="mt-3 block w-full border-b-2 border-gry-200 px-3 py-2 focus:border-gbswhs2" required type="password" placeholder="비밀번호 다시 입력"/>
         
         <input onChange={(e) => setUser({...user, code: e.target.value})} className={"mt-3 block w-full border-b-2 border-gry-200 px-3 py-2 focus:border-gbswhs2"} required type="text" placeholder="인증코드"/>
-        <button className="mt-3 font-bold bg-gbswhs2 text-white rounded px-3 py-2" type="submit">회원가입</button>
+        <div className="flex gap-2">
+          <button className="mt-3 font-bold bg-gbswhs2 text-white rounded px-3 py-2 mr-2" type="submit">회원가입</button>
+          <Link href="/login"><button className="mt-3 font-bold bg-gbswhs2 text-white rounded px-3 py-2 ml-1" type="submit">계정이 있어요</button></Link>
+          <button className='text-xs' onClick={(e) => setStep(false)} type="button">인증코드 재발급</button>
+        </div>
       </form>
     </div>
   )
